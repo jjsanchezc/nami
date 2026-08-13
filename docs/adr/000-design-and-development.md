@@ -26,5 +26,7 @@ ASR for defining the way on how the application will be developed.
     1. Will have to re-design every time I finish a phase.
     2. The application in the beginning will be slow, might under-perform.
 
+### 000.1 Final decision
+The main reason of the project is to learn, thanks to that, the `Option.2` is the one. The trade-offs are worth.
 
-the end of this documentation is to learn 
+## ASR 000.2 
