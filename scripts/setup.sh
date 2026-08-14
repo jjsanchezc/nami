@@ -1,13 +1,35 @@
 #!/usr/bin/env bash
 
+# Variables
+new_user=finance-svc
+new_group=finance
+new_dir=finance-tracker
+app_path="/opt/$new_dir"
 nologin_path="$(whereis nologin | cut -d ' ' -f 2)" # to make sure whereis
-# Create the finance-svc user
-useradd finance-svc -s "$nologin_path"
+
+# Creating user
+x="$(cat /etc/passwd | cut -d : -f 1 | grep -x $new_user)"
+if [[ "$x" != "$new_user" ]]; then
+  echo "creating user"
+  useradd "$new_user" -Ns "$nologin_path" # create the user without creating a homonym group (-N) and no login shell (-s nologin_path)
+fi
 
 # Create the finance group
-# groupadd finance -g 1 -fU finance-svc
-groupadd finance -fU finance-svc,jjsanchezc
+groupadd "$new_group" -f # Create finance group without duplicates (-f)
 
-# Give the permissions to the group
-# dir="$PWD"
-#groupmod 2755 dir # no estoy seguro de la ubicacion a donde lo debo mandar
+# Add users to the group
+usermod "$new_user" -aG "$new_group"
+usermod jjsanchezc -aG "$new_group"
+
+# Set shared dir (finance_tracker)
+# necesito darle permisos al grupo finance pero tambien que sea el dueno
+mkdir -p "$app_path"
+chown "$new_user":"$new_group" "$app_path"
+chmod 2775 "$app_path"
+umask 002
+
+mkdir -p "$app_path"/data
+
+python3 -m "$app_path"/venv venv
+source "$app_path"/venv/bin/activate
+pip3 install -r "$app_path"/requirements.txt
