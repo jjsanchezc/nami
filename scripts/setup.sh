@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# check if sudo or root
+if [[ "$EUID" -ne 0 ]]; then # if effective user id is not equal to 0 (root or sudo),
+  echo "Sudo or root permission needed"
+  exit 1
+fi
+
 # Variables
 new_user=finance-svc
 new_group=finance
