@@ -42,4 +42,6 @@ apt install python3-venv -y
 python3 -m venv "$app_path"/venv
 source "$app_path"/venv/bin/activate
 
-pip3 install -r "$app_path"/requirements.txt
+if [[ -f "$app_path"/requirements.txt ]]; then
+  pip3 install -r "$app_path"/requirements.txt
+fi
