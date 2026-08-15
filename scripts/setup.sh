@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e # exit the script if something in it fails
 
 # check if sudo or root
 if [[ "$EUID" -ne 0 ]]; then # if effective user id is not equal to 0 (root or sudo),
