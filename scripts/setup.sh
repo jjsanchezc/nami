@@ -39,7 +39,7 @@ mkdir -p "$app_path"/data
 apt update && apt install python3 -y
 apt install python3-venv -y
 
-python3 -m "$app_path"/venv venv
+python3 -m venv "$app_path"/venv
 source "$app_path"/venv/bin/activate
 
 pip3 install -r "$app_path"/requirements.txt
