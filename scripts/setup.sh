@@ -36,9 +36,10 @@ umask 002
 
 mkdir -p "$app_path"/data
 
-apt update && apt install pyhton3 -y
+apt update && apt install python3 -y
 apt install python3-venv -y
 
 python3 -m "$app_path"/venv venv
 source "$app_path"/venv/bin/activate
+
 pip3 install -r "$app_path"/requirements.txt
