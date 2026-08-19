@@ -12,8 +12,8 @@ new_user=finance-svc
 new_group=finance
 new_dir=finance-tracker
 app_path="/opt/$new_dir"
-nologin_path="$(whereis nologin | cut -d ' ' -f 2)" # to make sure whereis
-repo_dir=$(dirname "${BASH_SOURCE[0]}")
+nologin_path="$(whereis nologin | cut -d ' ' -f 2)"  # to make sure whereis
+repo_dir=$(dirname "$(dirname "${BASH_SOURCE[0]}")") # Always get nami/ dir
 
 # Creating user
 x="$(cat /etc/passwd | cut -d : -f 1 | grep -x $new_user)"
