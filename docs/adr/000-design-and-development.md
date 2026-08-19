@@ -1,9 +1,10 @@
 # ADR 000 Design and development
 
 ## Table of ASRs
-1. [000.1 development]
+1. [000.1 development](#ASR-000.1-development)
+2. [000.2 design](#ASR-000.2-design)
 
-## ASR 000.1 development and
+## ASR 000.1 development
 ASR for defining the way on how the application will be developed.
 
 ### Options
@@ -29,4 +30,5 @@ ASR for defining the way on how the application will be developed.
 ### 000.1 Final decision
 The main reason of the project is to learn, thanks to that, the `Option.2` is the one. The trade-offs are worth.
 
-## ASR 000.2 
+## ASR 000.2 design
+

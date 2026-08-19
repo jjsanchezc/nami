@@ -13,6 +13,7 @@ new_group=finance
 new_dir=finance-tracker
 app_path="/opt/$new_dir"
 nologin_path="$(whereis nologin | cut -d ' ' -f 2)" # to make sure whereis
+repo_dir=$(dirname "${BASH_SOURCE[0]}")
 
 # Creating user
 x="$(cat /etc/passwd | cut -d : -f 1 | grep -x $new_user)"
@@ -36,7 +37,12 @@ chmod 2775 "$app_path"
 umask 002
 
 mkdir -p "$app_path"/data
+cp "$repo_dir"/requirements.txt "app_path"/requirements.txt
+cp "$repo_dir"/src/* "$app_path"/src/
+cp "$repo_dir"/scripts/* "$app_path"/scripts/
+cp "$repo_dir"/systemd/* "$app_path"/systemd/
 
+#$repo_root/src, $repo_root/scripts, $repo_root/systemd, $repo_root/requirements.txt
 apt update && apt install python3 -y
 apt install python3-venv -y
 

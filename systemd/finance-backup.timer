@@ -1,0 +1,3 @@
+# Create every night a copy of finance.db in backups (using the finance-db-copy.service)
+# Don't overwrite the other backups, create a new one (name it with the date)
+# Run service as finance-svc
