@@ -37,7 +37,7 @@ chmod 2775 "$app_path"
 umask 002
 
 mkdir -p "$app_path"/data
-cp "$repo_dir"/requirements.txt "app_path"/requirements.txt
+cp "$repo_dir"/requirements.txt "$app_path"/requirements.txt
 cp "$repo_dir"/src/* "$app_path"/src/
 cp "$repo_dir"/scripts/* "$app_path"/scripts/
 cp "$repo_dir"/systemd/* "$app_path"/systemd/
