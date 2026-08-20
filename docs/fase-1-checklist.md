@@ -35,7 +35,7 @@ sumamos.
       termine copiado en el lugar donde la app realmente corre — sin
       importar desde dónde se ejecute el script, y sin pisar los datos
       reales que ya existan ahí.
-- [ ] Una vez copiado el código, necesitamos que el esquema de la base se cree automáticamente, sin que nadie tenga que acordarse de correr algo a mano.
+- [x] Una vez copiado el código, necesitamos que el esquema de la base se cree automáticamente, sin que nadie tenga que acordarse de correr algo a mano.
 
 ### Backup automático — pendiente (el ítem de "algo real corriendo como systemd")
 - [ ] Necesitamos que todas las noches, sin que nadie esté logueado, se
