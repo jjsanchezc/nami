@@ -52,3 +52,7 @@ source "$app_path"/venv/bin/activate
 if [[ -f "$app_path"/requirements.txt ]]; then
   pip3 install -r "$app_path"/requirements.txt
 fi
+
+cd /opt/finance-tracker/data
+python3 db.py
+echo "db.py executed corretly"
