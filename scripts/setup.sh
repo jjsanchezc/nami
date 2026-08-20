@@ -38,9 +38,9 @@ umask 002
 
 mkdir -p "$app_path"/data
 cp "$repo_dir"/requirements.txt "$app_path"/requirements.txt
-cp "$repo_dir"/src/* "$app_path"/src/
-cp "$repo_dir"/scripts/* "$app_path"/scripts/
-cp "$repo_dir"/systemd/* "$app_path"/systemd/
+rsync -a --delete "$repo_dir"/src/* "$app_path"/src/
+rsync -a --delete "$repo_dir"/scripts/* "$app_path"/scripts/
+rsync -a --delete "$repo_dir"/systemd/* "$app_path"/systemd/
 
 #$repo_root/src, $repo_root/scripts, $repo_root/systemd, $repo_root/requirements.txt
 apt update && apt install python3 -y
