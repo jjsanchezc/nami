@@ -37,12 +37,10 @@ chmod 2775 "$app_path"
 umask 002
 
 mkdir -p "$app_path"/data
-cp "$repo_dir"/requirements.txt "$app_path"/requirements.txt
-rsync -a --delete "$repo_dir"/src/* "$app_path"/src/
-rsync -a --delete "$repo_dir"/scripts/* "$app_path"/scripts/
-rsync -a --delete "$repo_dir"/systemd/* "$app_path"/systemd/
+rsync -a --delete "$repo_dir"/src/ "$app_path"/src/
+rsync -a --delete "$repo_dir"/scripts/ "$app_path"/scripts/
+rsync -a --delete "$repo_dir"/systemd/ "$app_path"/systemd/
 
-#$repo_root/src, $repo_root/scripts, $repo_root/systemd, $repo_root/requirements.txt
 apt update && apt install python3 -y
 apt install python3-venv -y
 
@@ -50,9 +48,9 @@ python3 -m venv "$app_path"/venv
 source "$app_path"/venv/bin/activate
 
 if [[ -f "$app_path"/requirements.txt ]]; then
+  cp "$repo_dir"/requirements.txt "$app_path"/requirements.txt
   pip3 install -r "$app_path"/requirements.txt
 fi
 
-cd /opt/finance-tracker/src/
-python3 db.py
-echo "db.py executed corretly"
+python3 "$app_path"/src/db.py
+echo "db.py executed correctly"
