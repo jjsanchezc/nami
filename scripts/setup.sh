@@ -37,6 +37,7 @@ chmod 2775 "$app_path"
 umask 002
 
 mkdir -p "$app_path"/data
+mkdir -p "$app_path"/backups
 cp "$repo_dir"/requirements.txt "$app_path"/requirements.txt
 rsync -a --delete "$repo_dir"/src/ "$app_path"/src/
 rsync -a --delete "$repo_dir"/scripts/ "$app_path"/scripts/
