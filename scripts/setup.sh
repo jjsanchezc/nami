@@ -45,6 +45,7 @@ rsync -a --delete "$repo_dir"/systemd/ "$app_path"/systemd/
 
 apt update && apt install python3 -y
 apt install python3-venv -y
+apt install sqlite3
 
 python3 -m venv "$app_path"/venv
 source "$app_path"/venv/bin/activate
