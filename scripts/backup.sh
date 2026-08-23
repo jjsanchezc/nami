@@ -9,5 +9,6 @@ for i in "$app_path"/data/*; do
 
   filename="$(basename "$i")" # new var so i don't overwrite the path on line 11
   new_name="$app_path"/backups/backup_"$file_date"_"$filename"
-  rsync "$i" "$new_name"
+  # rsync "$i" "$new_name" # This is could cause a failure when someone is modifying the db, and we could not stop the service
+  sqlite3 "$i" ".backup '$new_name'"
 done
