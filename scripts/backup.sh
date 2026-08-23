@@ -9,5 +9,5 @@ for i in "$app_path"/data/*; do
   i=$(echo "$i" | awk -F'/' '{print $NF}')
   echo "new: $i"
   new_name="$app_path"/backups/backup_"$(date +"%Y-%m-%d_%H-%M-%S")"_"$i"
-  rsync "$i" "$new_name"
+  rsync "$app_path/data/$i" "$new_name"
 done
