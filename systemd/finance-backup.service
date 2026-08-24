@@ -1,1 +1,12 @@
-# Un service que sea para copiar una vez db.py
+[Unit]
+Description=Create a backup of finance-tracker/data
+
+
+[Service]
+User=finance-svc
+Group=finance
+Type=oneshot
+ExecStart=/bin/bash /opt/finance-tracker/scripts/backup.sh
+LogLevelMax=5
+Restart=on-failure
+RestartSec=60

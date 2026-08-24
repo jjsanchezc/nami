@@ -1,3 +1,12 @@
-# Create every night a copy of finance.db in backups (using the finance-db-copy.service)
-# Don't overwrite the other backups, create a new one (name it with the date)
-# Run service as finance-svc
+
+[Unit]
+Description=Run finance-backup.service every night
+
+[Timer]
+User=finance-svc
+Group=finance
+OnCalendar=*-*-* 23:59:59 America/Bogota
+Persistent=true
+
+[Install]
+WantedBy=timers.target

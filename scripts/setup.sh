@@ -43,9 +43,10 @@ rsync -a --delete "$repo_dir"/src/ "$app_path"/src/
 rsync -a --delete "$repo_dir"/scripts/ "$app_path"/scripts/
 rsync -a --delete "$repo_dir"/systemd/ "$app_path"/systemd/
 
+# App and python config
 apt update && apt install python3 -y
 apt install python3-venv -y
-apt install sqlite3
+apt install sqlite3 -y
 
 python3 -m venv "$app_path"/venv
 source "$app_path"/venv/bin/activate
@@ -56,3 +57,13 @@ fi
 
 python3 "$app_path"/src/db.py
 echo "db.py executed correctly"
+
+# System units config
+service_path=/etc/systemd/system
+
+rsync "$repo_dir"/systemd/ "$service_path"/
+
+systemctl daemon-reload
+# right now is just one service that needs to be activated, but in case that the units grow, think about
+# some loops or cases to solve it (ADR-000)
+systemctl enable "$service_path"/finance-backup.timer --now
