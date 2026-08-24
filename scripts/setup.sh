@@ -61,7 +61,7 @@ echo "db.py executed correctly"
 # System units config
 service_path=/etc/systemd/system
 
-rsync "$repo_dir"/systemd/ "$service_path"/
+rsync -a "$repo_dir"/systemd/ "$service_path"/
 
 systemctl daemon-reload
 # right now is just one service that needs to be activated, but in case that the units grow, think about
