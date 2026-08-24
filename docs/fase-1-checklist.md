@@ -38,32 +38,32 @@ sumamos.
 - [x] Una vez copiado el código, necesitamos que el esquema de la base se cree automáticamente, sin que nadie tenga que acordarse de correr algo a mano.
 
 ### Backup automático — pendiente (el ítem de "algo real corriendo como systemd")
-- [ ] Necesitamos que todas las noches, sin que nadie esté logueado, se
+- [x] Necesitamos que todas las noches, sin que nadie esté logueado, se
       genere una copia de la base de datos — de forma segura, sin
       arriesgarse a copiar el archivo a mitad de una escritura.
-- [ ] Necesitamos que cada copia quede identificada de alguna forma que no
+- [x] Necesitamos que cada copia quede identificada de alguna forma que no
       pise la de la noche anterior.
-- [ ] Necesitamos que ese backup corra como el usuario de servicio, no como
+- [x] Necesitamos que ese backup corra como el usuario de servicio, no como
       root ni como vos.
-- [ ] Necesitamos que ese backup sea una tarea puntual que termina (no algo
+- [x] Necesitamos que ese backup sea una tarea puntual que termina (no algo
       que quede corriendo indefinidamente).
-- [ ] Necesitamos algo que dispare esa tarea automáticamente, todas las
+- [x] Necesitamos algo que dispare esa tarea automáticamente, todas las
       noches, a una hora fija.
-- [ ] Necesitamos que, si el servidor estuvo apagado justo a esa hora, el
+- [x] Necesitamos que, si el servidor estuvo apagado justo a esa hora, el
       backup se corra igual apenas vuelva a estar disponible, en vez de
       perderse esa noche.
-- [ ] Necesitamos que ese disparador quede activo solo con que el sistema
+- [x] Necesitamos que ese disparador quede activo solo con que el sistema
       arranque, sin que alguien tenga que iniciarlo a mano cada vez.
-- [ ] Una vez escrito, necesitamos que termine en el lugar donde el sistema
+- [x] Una vez escrito, necesitamos que termine en el lugar donde el sistema
       realmente lee este tipo de configuración, y que se entere de que
       existe.
-- [ ] Necesitamos poder confirmar, sin adivinar, si está activo y cuándo fue
+- [x] Necesitamos poder confirmar, sin adivinar, si está activo y cuándo fue
       (o va a ser) su próxima corrida.
 - [ ] Necesitamos poder diagnosticar una falla del backup mirando
       únicamente los logs, sin conjeturar qué pasó.
 
 ### Repo — pendiente
-- [ ] Necesitamos que el archivo de dependencias exista en el repo, aunque
+- [x] Necesitamos que el archivo de dependencias exista en el repo, aunque
       hoy no haya ninguna que declarar todavía.
 - [ ] Necesitamos que quede documentado, en un lugar que cualquiera pueda
       leer, qué decisiones se tomaron esta semana y por qué (usuario/grupo/
