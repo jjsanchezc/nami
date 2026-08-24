@@ -3,8 +3,6 @@
 Description=Run finance-backup.service every night
 
 [Timer]
-User=finance-svc
-Group=finance
 OnCalendar=*-*-* 23:59:59 America/Bogota
 Persistent=true
 
