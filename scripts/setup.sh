@@ -30,6 +30,7 @@ usermod "$new_user" -aG "$new_group"
 usermod jjsanchezc -aG "$new_group"
 
 # Set shared dir (finance_tracker)
+# Give admin permissions to finance group too
 # necesito darle permisos al grupo finance pero tambien que sea el dueno
 mkdir -p "$app_path"
 chown "$new_user":"$new_group" "$app_path"
