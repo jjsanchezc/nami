@@ -85,7 +85,7 @@ sumamos.
 
 - [x] Necesitábamos que el proyecto estuviera versionado desde el arranque —
       ya lo está.
-- [ ] Necesitamos práctica real de ramas, merge y resolución de conflictos
+- [x] Necesitamos práctica real de ramas, merge y resolución de conflictos
       (puede ser en un repo aparte, no necesariamente acá).
 - [ ] Necesitamos confirmar, corriendo todo de punta a punta en un servidor
       limpio, que no hace falta ningún paso manual no documentado.
