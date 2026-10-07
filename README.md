@@ -12,10 +12,11 @@ the way.
 
 ## Status
 
-Phase 1 in progress. Right now the server-side infrastructure is done: an
-idempotent setup script, and an automated nightly backup managed by
-systemd. The CLI itself (`gasto add`, `suscripcion list`, etc.) is not built
-yet — only the minimal database schema exists so far. See
+Phase 1 in progress. The server-side infrastructure is done: an idempotent
+setup script, an automated nightly backup managed by systemd, SSH locked
+down to key-only auth on a non-default port, and a firewall allowing only
+that port in. The CLI itself (`gasto add`, `suscripcion list`, etc.) is not
+built yet — only the minimal database schema exists so far. See
 `docs/fase-1-checklist.md` for the current state in detail.
 
 ## Requirements
@@ -30,6 +31,7 @@ yet — only the minimal database schema exists so far. See
 git clone <this-repo-url> nami
 cd nami
 sudo ./scripts/setup.sh
+sudo ./scripts/firewall-setup.sh
 ```
 
 `setup.sh` is idempotent — safe to run again after pulling new code. It:
@@ -44,12 +46,27 @@ sudo ./scripts/setup.sh
 - Deploys and enables the `finance-backup.timer` systemd unit, which backs
   up `finance.db` every night.
 
+`firewall-setup.sh` locks down network access to the server:
+
+- Copies the `.conf` files in `scripts/conf/` into `/etc/ssh/sshd_config.d/`,
+  disabling password login and moving SSH to a non-default port, then
+  restarts `sshd`.
+- Configures `ufw` to deny all incoming traffic by default, with a single
+  explicit exception for the SSH port.
+
+**Before you run it over an existing SSH connection:** don't close that
+session until you've confirmed, from a separate terminal, that you can
+connect on the new port with your key. If something is misconfigured and
+you close your only session first, you can lose remote access to the
+server entirely.
+
 ## Project layout
 
 ```
 nami/
 ├── src/            # application code (db.py: schema; more to come)
-├── scripts/        # setup.sh, backup.sh
+├── scripts/        # setup.sh, backup.sh, firewall-setup.sh
+│   └── conf/       # sshd_config.d drop-ins deployed by firewall-setup.sh
 ├── systemd/        # finance-backup.service, finance-backup.timer
 ├── docs/adr/       # design decisions, with reasoning
 ├── requirements.txt
@@ -77,6 +94,13 @@ Full reasoning lives in `docs/adr/`; short summary:
   this repo — keeps a clear boundary between what's freely editable and
   what actually runs with real privileges. See
   [ADR 002.2](docs/adr/002-deploy-and-setup.md).
+- **SSH: `ed25519` keys only, no password, on a non-default port.** See
+  [ADR 003](docs/adr/003-server-connection.md) for the key type, how the
+  `sshd` config is overridden without touching cloud-init's own file, the
+  port change, and why password auth is disabled.
+- **`ufw`, denying all incoming traffic except the SSH port.** See
+  [ADR 004](docs/adr/004-server-security.md) for why `ufw` over `firewalld`/
+  `nftables`, and the rules themselves.
 
 ## License
 
