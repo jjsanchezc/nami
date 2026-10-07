@@ -19,6 +19,7 @@ The document have names that are short nun phrases with it corresponding ADR num
   - etc...
 
 - A decision may be "proposed" if the project stakeholders haven't agreed with it yet, or "accepted" once it is agreed. If a later ADR changes or reverses a decision, it may be marked as "deprecated" or "superposed" with a reference to its replacement
+
 ### Context
 - This section describes the forces at play, including:
   - technological 
@@ -53,7 +54,24 @@ Final decision with its explanation
 2. At the end of the development, the application Must be resilient.
 
 ## Table of ADRs
-0. [Design and development](./000-development.md)
+0.[Design and development](./000-development.md)
+1.[Databases](./001-databases.md)
+2.[Deployment and Server Setup](./002-deploy-and-setup.md)
+3.[Server Connection](./003-server-connection.md)
+4.[Server security](./004-server-security.md)
 
 ### Design and development
 All decisions that've been taken before starting writing any code.
+
+### Databases
+Database type, engine, and backup strategy for `finance.db`.
+
+### Deployment and Server Setup
+The service account/permissions model used to run automated tasks, and how
+code gets from the git repo to where it actually runs on the server.
+
+### Server connection
+All things that changed in the server to provide connection to the client
+
+### Server security
+All decisions that have been made to the server in terms of security
