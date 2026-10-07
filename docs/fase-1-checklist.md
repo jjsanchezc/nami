@@ -59,26 +59,26 @@ sumamos.
       existe.
 - [x] Necesitamos poder confirmar, sin adivinar, si está activo y cuándo fue
       (o va a ser) su próxima corrida.
-- [ ] Necesitamos poder diagnosticar una falla del backup mirando
+- [x] Necesitamos poder diagnosticar una falla del backup mirando
       únicamente los logs, sin conjeturar qué pasó.
 
 ### Repo — pendiente
 - [x] Necesitamos que el archivo de dependencias exista en el repo, aunque
       hoy no haya ninguna que declarar todavía.
-- [ ] Necesitamos que quede documentado, en un lugar que cualquiera pueda
+- [x] Necesitamos que quede documentado, en un lugar que cualquiera pueda
       leer, qué decisiones se tomaron esta semana y por qué (usuario/grupo/
       permisos, por qué se eligió lo que se eligió para el backup automático,
       cómo se relaciona el repo con lo que corre en el servidor).
 
-## Semana 3 — Redes (no empezada)
+## Semana 3 — Redes (completa)
 
-- [ ] Necesitamos que solo se pueda entrar al servidor con una llave, nunca
+- [x] Necesitamos que solo se pueda entrar al servidor con una llave, nunca
       con contraseña.
-- [ ] Necesitamos que el servidor rechace cualquier conexión a un puerto que
+- [x] Necesitamos que el servidor rechace cualquier conexión a un puerto que
       no sea estrictamente necesario.
-- [ ] Necesitamos confirmar que la app sigue siendo alcanzable solo por lo
+- [x] Necesitamos confirmar que la app sigue siendo alcanzable solo por lo
       que corresponde, ni más ni menos, después de endurecer lo anterior.
-- [ ] Necesitamos que las decisiones de esta semana también queden
+- [x] Necesitamos que las decisiones de esta semana también queden
       documentadas con su porqué.
 
 ## Semana 4 — Git a fondo + cierre de Fase 1 (no empezada)
