@@ -87,18 +87,18 @@ sumamos.
       ya lo está.
 - [x] Necesitamos práctica real de ramas, merge y resolución de conflictos
       (puede ser en un repo aparte, no necesariamente acá).
-- [ ] Necesitamos confirmar, corriendo todo de punta a punta en un servidor
+- [x] Necesitamos confirmar, corriendo todo de punta a punta en un servidor
       limpio, que no hace falta ningún paso manual no documentado.
-- [ ] Necesitamos repasar el checklist de cierre completo antes de dar la
+- [x] Necesitamos repasar el checklist de cierre completo antes de dar la
       fase por terminada (abajo).
 
 ## Checklist de cierre de Fase 1
 
 (igual al del plan general, para tenerlo todo en un solo lugar)
 
-- [ ] Servidor accesible por SSH con configuración propia (no defaults, solo por llave)
-- [ ] Script de setup automatizado, reproducible e idempotente
-- [ ] Algo real corriendo, gestionado como servicio de systemd
-- [ ] Firewall configurado con solo los puertos necesarios abiertos
-- [ ] Todo el proyecto versionado en Git con historial limpio
-- [ ] README con las decisiones tomadas y el porqué (mini-ADRs)
+- [x] Servidor accesible por SSH con configuración propia (no defaults, solo por llave)
+- [x] Script de setup automatizado, reproducible e idempotente
+- [x] Algo real corriendo, gestionado como servicio de systemd
+- [x] Firewall configurado con solo los puertos necesarios abiertos
+- [x] Todo el proyecto versionado en Git con historial limpio
+- [x] README con las decisiones tomadas y el porqué (mini-ADRs)
