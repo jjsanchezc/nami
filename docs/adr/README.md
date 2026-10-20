@@ -59,6 +59,7 @@ Final decision with its explanation
 2.[Deployment and Server Setup](./002-deploy-and-setup.md)
 3.[Server Connection](./003-server-connection.md)
 4.[Server security](./004-server-security.md)
+5.[Cloud IAM](./005-cloud-iam.md)
 
 ### Design and development
 All decisions that've been taken before starting writing any code.
@@ -75,3 +76,7 @@ All things that changed in the server to provide connection to the client
 
 ### Server security
 All decisions that have been made to the server in terms of security
+
+### Cloud IAM
+Which identity is used to work on the AWS account, and how its permissions
+are granted.

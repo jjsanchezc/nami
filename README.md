@@ -3,21 +3,23 @@
 A personal finance tracker (expenses + subscriptions) for a single user,
 running locally on a self-managed Linux server.
 
-This is the closing project of **Phase 1** of a 24-week roadmap toward a
-junior infrastructure/SRE role. The point of the project isn't the app
-itself — it's a vehicle to apply, hands-on, what each phase of the roadmap
-covers (Linux fundamentals, bash + systemd, networking, git). See
-`docs/adr/` for the reasoning behind every non-obvious decision made along
-the way.
+This is the applied project of a 24-week roadmap toward a junior
+infrastructure/SRE role, built and reworked phase by phase across the whole
+roadmap. The point of the project isn't the app itself — it's a vehicle to
+apply, hands-on, what each phase covers (Linux fundamentals, bash + systemd,
+networking and git in Phase 1; cloud and infrastructure as code in Phase 2;
+and so on). See `docs/adr/` for the reasoning behind every non-obvious
+decision made along the way.
 
 ## Status
 
-Phase 1 in progress. The server-side infrastructure is done: an idempotent
-setup script, an automated nightly backup managed by systemd, SSH locked
-down to key-only auth on a non-default port, and a firewall allowing only
-that port in. The CLI itself (`gasto add`, `suscripcion list`, etc.) is not
-built yet — only the minimal database schema exists so far. See
-`docs/fase-1-checklist.md` for the current state in detail.
+Phase 1 is complete: an idempotent setup script, an automated nightly
+backup managed by systemd, SSH locked down to key-only auth on a non-default
+port, and a firewall allowing only that port in. Phase 2 (AWS + Terraform)
+is in progress. The CLI itself (`gasto add`, `suscripcion list`, etc.) is
+not built yet — only the minimal database schema exists so far. See the
+current phase's checklist (`docs/fase-<N>-checklist.md`) for the state in
+detail.
 
 ## Requirements
 
@@ -64,11 +66,15 @@ server entirely.
 
 ```
 nami/
-├── src/            # application code (db.py: schema; more to come)
-├── scripts/        # setup.sh, backup.sh, firewall-setup.sh
-│   └── conf/       # sshd_config.d drop-ins deployed by firewall-setup.sh
-├── systemd/        # finance-backup.service, finance-backup.timer
-├── docs/adr/       # design decisions, with reasoning
+├── src/                 # application code (db.py: schema; more to come)
+├── scripts/             # setup.sh, backup.sh, firewall-setup.sh
+│   └── conf/            # sshd_config.d drop-ins deployed by firewall-setup.sh
+├── systemd/             # finance-backup.service, finance-backup.timer
+├── docs/
+│   ├── adr/             # design decisions, with reasoning
+│   ├── conventions/     # naming and tagging rules for cloud resources
+│   ├── repository/      # commit message rules (Conventional Commits)
+│   └── fase-N-checklist.md   # per-phase progress checklists
 ├── requirements.txt
 └── LICENSE
 ```
@@ -101,6 +107,14 @@ Full reasoning lives in `docs/adr/`; short summary:
 - **`ufw`, denying all incoming traffic except the SSH port.** See
   [ADR 004](docs/adr/004-server-security.md) for why `ufw` over `firewalld`/
   `nftables`, and the rules themselves.
+- **AWS work runs through a dedicated IAM user, never the root user**, with
+  permissions granted through IAM groups instead of per-user — limits
+  accidental damage and the blast radius of leaked credentials. See
+  [ADR 005](docs/adr/005-cloud-iam.md).
+- **Cloud resources follow a `<project>-<environment>-<component>` naming
+  scheme and a fixed set of tags** (`project`, `environment`, `managed-by`),
+  so the project's resources never mix with labs or anything else in the
+  account. See [`docs/conventions/naming-and-tagging.md`](docs/conventions/naming-and-tagging.md).
 
 ## License
 
