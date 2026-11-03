@@ -14,15 +14,15 @@ resuelve una sola vez, por eso no tiene casilla.
 
 ## Semana 5 — Fundamentos de nube y AWS: cuenta, IAM, consola vs CLI
 
-- [ ] Necesitamos que la cuenta nos avise si el gasto supera lo esperado —
+- [x] Necesitamos que la cuenta nos avise si el gasto supera lo esperado —
       configurado antes de crear cualquier otro recurso.
-- [ ] Necesitamos que la identidad "dueña de todo" de la cuenta quede
+- [x] Necesitamos que la identidad "dueña de todo" de la cuenta quede
       protegida con algo más que una contraseña, y que no se use para el
       trabajo diario.
 - [x] Necesitamos una identidad dedicada para el trabajo de esta fase, con
       solo los permisos que hacen falta — y que, si mañana se sumara otra
       persona, no haya que configurarle permisos uno por uno.
-- [ ] Necesitamos poder operar la cuenta desde la terminal con esa identidad,
+- [x] Necesitamos poder operar la cuenta desde la terminal con esa identidad,
       y confirmar sin adivinar con qué identidad nos ve AWS.
 - [x] Necesitamos una forma consistente de nombrar y etiquetar los recursos
       del proyecto, para no mezclarlos con labs ni con otra cosa de la cuenta.
