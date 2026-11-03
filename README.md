@@ -111,10 +111,11 @@ Full reasoning lives in `docs/adr/`; short summary:
   permissions granted through IAM groups instead of per-user — limits
   accidental damage and the blast radius of leaked credentials. See
   [ADR 005](docs/adr/005-cloud-iam.md).
-- **Cloud resources follow a `<project>-<environment>-<component>` naming
-  scheme and a fixed set of tags** (`project`, `environment`, `managed-by`),
-  so the project's resources never mix with labs or anything else in the
-  account. See [`docs/conventions/naming-and-tagging.md`](docs/conventions/naming-and-tagging.md).
+- **Cloud resources follow a `<project>-<scope>-[<role>-]<type>` naming
+  scheme and a mandatory set of tags** (`Name`, `project`, `environment`,
+  `managed-by`, plus `lab`/`expires` on labs), so the project's resources
+  never mix with labs or anything else in the account, and labs can be
+  found and cleaned up by tag. See [`docs/conventions/naming-and-tagging.md`](docs/conventions/naming-and-tagging.md).
 
 ## License
 
